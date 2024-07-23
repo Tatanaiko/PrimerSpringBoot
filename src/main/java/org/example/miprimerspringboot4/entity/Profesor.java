@@ -8,14 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
-@Table(name="persona")
-public class Persona {
+@Table(name="profesores")
+public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_persona", nullable = false, unique = true)
-    private long id;
+    @Column(name= "id_profesor", nullable = false, unique = true)
+    private Long id;
 
     @Column(name="nombre", nullable = false, length = 50)
     private String nombre;
@@ -23,8 +22,16 @@ public class Persona {
     @Column(name="apellido", nullable = false, length = 50)
     private String apellido;
 
-    public Persona(String nombre, String apellido) {
+    @Column(name = "email", nullable = false, length = 100)
+    private String email;
+
+    @Column(name = "asignatura", nullable = false, length = 200)
+    private String asignatura;
+
+    public Profesor(String nombre, String apellido, String email, String asignatura) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.email = email;
+        this.asignatura = asignatura;
     }
 }

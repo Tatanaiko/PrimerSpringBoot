@@ -5,26 +5,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
-@Table(name="persona")
-public class Persona {
+@Table(name="Estudiantes")
+public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_persona", nullable = false, unique = true)
+    @Column(name = "id_estudiante", nullable = false, unique = true)
     private long id;
 
     @Column(name="nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Column(name="apellido", nullable = false, length = 50)
+    @Column(name="apellido", nullable = true, length = 50)
     private String apellido;
 
-    public Persona(String nombre, String apellido) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
+    @Column(name = "fecha_nacimiento", nullable = false)
+    private LocalDate birthDate;
+
+    @Column(nullable= false, unique = true, length = 150)
+    private String email;
+
 }
